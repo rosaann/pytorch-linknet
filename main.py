@@ -13,7 +13,7 @@ from opts import get_args # Get all the input arguments
 from test import Test
 from train import Train
 from confusion_matrix import ConfusionMatrix
-from data.segmented_data import segmented_data
+from data.segmented_data import SegmentedData
 import transforms
 
 print('\033[0;0f\033[0J')
@@ -139,20 +139,20 @@ def main():
         ])
 
     if args.dataset == 'cs':
-        import data.segmented_data as segmented_data
+        from data.segmented_data import SegmentedData
         print ("{}Cityscapes dataset in use{}!!!".format(CP_G, CP_C))
     else:
         print ("{}Invalid data-loader{}".format(CP_R, CP_C))
 
     # Training data loader
-    data_obj_train = segmented_data.SegmentedData(root=args.datapath, mode='train',
+    data_obj_train = SegmentedData(root=args.datapath, mode='train',
             transform=prep_data, target_transform=prep_target)
     data_loader_train = DataLoader(data_obj_train, batch_size=args.bs, shuffle=True,
             num_workers=args.workers, pin_memory=True)
     data_len_train = len(data_obj_train)
 
     # Testing data loader
-    data_obj_test = segmented_data.SegmentedData(root=args.datapath, mode='val',
+    data_obj_test = SegmentedData(root=args.datapath, mode='val',
             transform=prep_data, target_transform=prep_target)
     data_loader_test = DataLoader(data_obj_test, batch_size=args.bs, shuffle=False,
             num_workers=args.workers, pin_memory=True)
