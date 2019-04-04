@@ -13,7 +13,7 @@ from opts import get_args # Get all the input arguments
 from test import Test
 from train import Train
 from confusion_matrix import ConfusionMatrix
-import data.segmented_data as segmented_data
+from data.segmented_data import segmented_data
 import transforms
 
 print('\033[0;0f\033[0J')
