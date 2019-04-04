@@ -13,7 +13,7 @@ from opts import get_args # Get all the input arguments
 from test import Test
 from train import Train
 from confusion_matrix import ConfusionMatrix
-from data.segmented_data import SegmentedData
+from dataset.segmented_data import SegmentedData
 import transforms
 
 print('\033[0;0f\033[0J')
@@ -139,7 +139,7 @@ def main():
         ])
 
     if args.dataset == 'cs':
-        from data.segmented_data import SegmentedData
+        from dataset.segmented_data import SegmentedData
         print ("{}Cityscapes dataset in use{}!!!".format(CP_G, CP_C))
     else:
         print ("{}Invalid data-loader{}".format(CP_R, CP_C))
