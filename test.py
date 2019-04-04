@@ -33,8 +33,8 @@ class Test(object):
         pbar = trange(len(self.data_loader.dataset), desc='Validation ')
 
         for batch_idx, (x, yt) in enumerate(self.data_loader):
-            x = x.cuda(async=True)
-            yt = yt.cuda(async=True)
+            x = x.cuda()
+            yt = yt.cuda()
             input_var = Variable(x, requires_grad=False)
             target_var = Variable(yt, requires_grad=False)
 
