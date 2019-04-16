@@ -189,8 +189,8 @@ def main():
 #                if not isinstance(i, nn.Linear) and len(i.state_dict()) > 0:
 #                    i.weight.data = j.weight.data
 
-    model = torch.nn.DataParallel(model, device_ids=range(torch.cuda.device_count()))
-    model.cuda()
+   # model = torch.nn.DataParallel(model, device_ids=range(torch.cuda.device_count()))
+    model = model.cuda()
     optimizer = torch.optim.Adam(model.parameters(), args.lr)#,
             #momentum=args.momentum, weight_decay=args.wd)
 

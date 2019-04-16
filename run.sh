@@ -1,2 +1,2 @@
 #!/bin/bash
-python main.py --datapath /data/gtCoarse/gtCoarse/ --cachepath /dataCache/coarse/ --dataset cs --model models/model.py --save /Trained_models/cityscapes/ --saveTrainConf True --saveAll True --plot True
+python main.py --datapath data/ --dataset cs --model models/model.py --save Trained_models/cityscapes/ --saveAll 
