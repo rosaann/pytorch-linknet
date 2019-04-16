@@ -174,7 +174,8 @@ def main():
         if not os.path.exists(str(args.save)+'/all'):
             os.mkdir(str(args.save)+'/all')
 
-    if args.model == 'linknet':
+   # if args.model == 'linknet':
+    if 1:
         # Save model definiton script
         call(["cp", "./models/linknet.py", args.save])
 
