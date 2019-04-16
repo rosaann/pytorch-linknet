@@ -41,6 +41,7 @@ def default_loader(input_path, target_path, img_transform, target_transform):
 
     raw_target_image = cv2.imread(target_path, 0)
     # Get torch tensor
+    print('target_path ', target_path)
     target_image = target_transform(raw_target_image)
 
     return input_image.float(), target_image.type(torch.LongTensor)
