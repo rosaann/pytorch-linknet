@@ -134,14 +134,22 @@ class LinkNet(nn.Module):
 
         # Decoder blocks
         #d4 = e3 + self.decoder4(e4)
-        d4 = e3 + self.decoder4(e4)
+        d4 = self.decoder4(e4)
         print('d4 ', d4.shape)
-        d3 = e2 + self.decoder3(d4)
+        d4 = e3 + d4
+        print('d4 2 ', d4.shape)
+        d3 = self.decoder3(d4)
         print('d3 ', d3.shape)
-        d2 = e1 + self.decoder2(d3)
+        d3 = e2 + d3
+        print('d3 2 ', d3.shape)
+        d2 = self.decoder2(d3)
         print('d2 ', d2.shape)
-        d1 = x + self.decoder1(d2)
+        d2 = e1 + d2
+        print('d2 2 ', d2.shape)
+        d1 = self.decoder1(d2)
         print('d1 ', d1.shape)
+        d1 = x + d1
+        print('d1 2 ', d1.shape)
 
         # Classifier
         y = self.tp_conv1(d1)
