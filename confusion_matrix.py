@@ -18,8 +18,8 @@ class ConfusionMatrix:
         self.matStartIdx = 1 if not self.useUnlabeled else 0
 
     def update_matrix(self, target, prediction):
-        print('target ', target.shape)
-        print('prediction ', prediction.shape)
+      #  print('target ', target.shape)
+      #  print('prediction ', prediction.shape)
         if not(isinstance(prediction, np.ndarray)) or not(isinstance(target, np.ndarray)):
             print("Expecting ndarray")
         elif len(target.shape) == 3:          # batched spatial target
@@ -52,10 +52,10 @@ class ConfusionMatrix:
         else:
             print("Data with this dimension cannot be handled")
 
-        print('temp_target ', temp_target.shape, ' ', temp_target)
-        print('temp_prediction ', temp_prediction.shape, ' ', temp_prediction)
+      #  print('temp_target ', temp_target.shape, ' ', temp_target)
+      #  print('temp_prediction ', temp_prediction.shape, ' ', temp_prediction)
         self.mat += confusion_matrix(temp_target, temp_prediction, labels=self.list_classes)
-        print('self.mat ', self.mat.shape, ' ', self.mat)
+     #   print('self.mat ', self.mat.shape, ' ', self.mat)
 
     def scores(self):
         tp = 0
@@ -66,13 +66,13 @@ class ConfusionMatrix:
         N = 0       # Total samples
         for i in range(self.matStartIdx, self.nclasses):
             N += sum(self.mat[:, i])
-            print('N ', N)
+       #     print('N ', N)
             tp = self.mat[i][i]
-            print('tp ', tp)
+       #     print('tp ', tp)
             fp = sum(self.mat[self.matStartIdx:, i]) - tp
-            print('fp ', fp)
+       #     print('fp ', fp)
             fn = sum(self.mat[i,self.matStartIdx:]) - tp
-            print('fn ', fn)
+       #     print('fn ', fn)
             if (tp+fp) == 0:
                 self.valids[i] = 0
             else:

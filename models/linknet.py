@@ -182,29 +182,46 @@ class LinkNetBase(nn.Module):
 
     def forward(self, x):
         # Initial block
+        print('x ', x.shape)
         x = self.conv1(x)
+        print('x1 ', x.shape)
         x = self.bn1(x)
+        print('x2 ', x.shape)
         x = self.relu(x)
+        print('x3 ', x.shape)
         x = self.maxpool(x)
+        print('x4 ', x.shape)
 
         # Encoder blocks
         e1 = self.encoder1(x)
+        print('x5 ', x.shape)
         e2 = self.encoder2(e1)
+        print('x6 ', x.shape)
         e3 = self.encoder3(e2)
+        print('x7 ', x.shape)
         e4 = self.encoder4(e3)
+        print('x8 ', x.shape)
 
         # Decoder blocks
         #d4 = e3 + self.decoder4(e4)
         d4 = e3 + self.decoder4(e4)
+        print('d4 ', d4.shape)
         d3 = e2 + self.decoder3(d4)
+        print('d3 ', d3.shape)
         d2 = e1 + self.decoder2(d3)
+        print('d2 ', d2.shape)
         d1 = x + self.decoder1(d2)
+        print('d1 ', d1.shape)
 
         # Classifier
         y = self.tp_conv1(d1)
+        print('y1 ', y.shape)
         y = self.conv2(y)
+        print('y2 ', y.shape)
         y = self.tp_conv2(y)
+        print('y3 ', y.shape)
 
         y = self.lsm(y)
+        print('y4 ', y.shape)
 
         return y
