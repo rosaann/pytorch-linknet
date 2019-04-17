@@ -119,8 +119,9 @@ class LinkNet(nn.Module):
 
     def forward(self, x):
         # Initial block
-        x = self.in_block(x)
         print('x ', x.shape)
+        x = self.in_block(x)
+        print('x1 ', x.shape)
         # Encoder blocks
         e1 = self.encoder1(x)
         print('e1 ', e1.shape)
