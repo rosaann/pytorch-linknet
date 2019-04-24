@@ -43,6 +43,7 @@ def default_loader(input_path, target_path, img_transform, target_transform):
     # Get torch tensor
   #  print('target_path ', target_path)
     target_image = target_transform(raw_target_image)
+    print('target_image ', target_image.shape)
 
     return input_image.float(), target_image.type(torch.LongTensor)
 
