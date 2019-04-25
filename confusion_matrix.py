@@ -19,7 +19,7 @@ class ConfusionMatrix:
 
     def update_matrix(self, target, prediction):
       #  print('target ', target.shape)
-      #  print('prediction ', prediction.shape)
+        print('prediction ', prediction.shape, ' ', prediction)
         if not(isinstance(prediction, np.ndarray)) or not(isinstance(target, np.ndarray)):
             print("Expecting ndarray")
         elif len(target.shape) == 3:          # batched spatial target
@@ -53,7 +53,7 @@ class ConfusionMatrix:
             print("Data with this dimension cannot be handled")
 
       #  print('temp_target ', temp_target.shape, ' ', temp_target)
-      #  print('temp_prediction ', temp_prediction.shape, ' ', temp_prediction)
+        print('temp_prediction ', temp_prediction.shape, ' ', temp_prediction)
         self.mat += confusion_matrix(temp_target, temp_prediction, labels=self.list_classes)
      #   print('self.mat ', self.mat.shape, ' ', self.mat)
 
